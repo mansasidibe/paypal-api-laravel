@@ -55,12 +55,12 @@ class PayPalController extends Controller
 
             return redirect()
                 ->route('createTransaction')
-                ->with('error', 'Something went wrong.');
+                ->with('error', 'Quelque chose s\'est mal passé!.');
 
         } else {
             return redirect()
                 ->route('createTransaction')
-                ->with('error', $response['message'] ?? 'Something went wrong.');
+                ->with('error', $response['message'] ?? 'Quelque chose s\'est mal passé!.');
         }
     }
 
@@ -79,11 +79,11 @@ class PayPalController extends Controller
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             return redirect()
                 ->route('createTransaction')
-                ->with('success', 'Transaction complete.');
+                ->with('success', 'Transaction completée avec succès.');
         } else {
             return redirect()
                 ->route('createTransaction')
-                ->with('error', $response['message'] ?? 'Something went wrong.');
+                ->with('error', $response['message'] ?? 'Quelque chose s\'est mal passé!.');
         }
     }
 
@@ -96,6 +96,6 @@ class PayPalController extends Controller
     {
         return redirect()
             ->route('createTransaction')
-            ->with('error', $response['message'] ?? 'You have canceled the transaction.');
+            ->with('error', $response['message'] ?? 'Votre transaction a été annulée!.');
     }
 }
